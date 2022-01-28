@@ -12,8 +12,9 @@ interface NotesAPI {
     @POST("/create")
     suspend fun postToDo(@Body requestBody: RequestBody): Response<ResponseBody>
 
+    @Headers("Content-Type: application/json")
     @GET("/todos")
-    suspend fun getToDO(): Response<ResponseBody>
+    suspend fun getToDO(): Response<List<Movie>>
 
     @PUT("/update/:todoID")
     suspend fun updateToDO(@Body requestBody: RequestBody): Response<ResponseBody>

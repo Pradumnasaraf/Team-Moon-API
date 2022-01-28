@@ -7,6 +7,8 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.CoroutineScope
@@ -15,8 +17,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
-import java.io.IOException
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,43 +41,70 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchTodos() {
-        var NoteList: List<noteSata> = ArrayList()
+        val gson = GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create()
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://team-moon-api.deta.dev/")
+
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
         val service = retrofit.create(NotesAPI::class.java)
         val jsonObject = JsonObject()
 
         val jsonobjectString = jsonObject.toString()
         val requestBody = jsonobjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
         CoroutineScope(Dispatchers.IO).launch {
 
             // Do the POST request and get response
-            try {
-                val response = service.getToDO()
-                withContext(Dispatchers.Main) {
-                    if (response.isSuccessful) {
-                        initRecyclerview(arrayListOf(response.body().toString()))
-                        Log.d("response", response.toString())
-                    } else {
+            val response = service.getToDO()
 
-                        Log.e("RETROFIT_ERROR", response.code().toString())
 
+//            try {
+//                val response = service.getToDO()
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    val json = response.body()
+                    if (json != null) {
+                        initRecyclerview(json)
                     }
+                    //  initRecyclerview(notes)
+                    Log.d("MainActivity", json.toString())
                 }
 
-            } catch (e: IOException) {
-                Log.e("mirror", e.message!!)
+//
+//            } catch (e: IOException) {
+//                Log.e("mirror", e.message!!)
+//            }
             }
-        }
 
+        }
     }
 
-    private fun initRecyclerview(noteList: java.util.ArrayList<String>) {
+    private fun initRecyclerview(noteList: List<Movie>) {
         val adapter = RecyclerAdapter(noteList)
         val layoutManager = GridLayoutManager(this, 2)
         recyclerview.layoutManager = layoutManager
         recyclerview.adapter = adapter
     }
+
+
+    private fun parseJson(notesData: ResponseBody?): ArrayList<Movie> {
+        val notes: ArrayList<Movie> = ArrayList()
+
+
+//            val title = items.getString(0)
+//            val description = items.getString(1)
+//            val id = items.getString(2)
+//            val createdAt = items.getString(3)
+//            notes.add(Movie(title, description, id, createdAt))
+
+
+        return notes
+    }
 }
+
+
