@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 
 const router = require("./routes/router");
+const rateLimter = require("./middleware/rateLimiter");
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(cors());
+app.use(rateLimter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);

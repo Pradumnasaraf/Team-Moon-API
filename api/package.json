@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon index.js",
     "format": "prettier --write .",
-    "lint": "npx eslint --fix ."
+    "lint": "npx eslint --fix .",
+    "prepare": "husky install",
+    "pre-commit": "yarn lint && yarn format"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
+    "express-rate-limit": "^6.2.0",
     "mongoose": "^6.1.8"
   },
   "devDependencies": {
@@ -28,6 +31,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "husky": "^7.0.0"
   }
 }
