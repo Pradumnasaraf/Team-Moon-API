@@ -7,7 +7,6 @@
     "dev": "nodemon index.js",
     "format": "prettier --write .",
     "lint": "npx eslint --fix .",
-    "prepare": "husky install",
     "pre-commit": "yarn lint && yarn format"
   },
   "keywords": [],
@@ -29,9 +28,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1",
-    "husky": "^7.0.0"
+    "prettier": "^2.5.1"
   }
 }
