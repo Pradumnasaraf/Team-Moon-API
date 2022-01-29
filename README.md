@@ -38,11 +38,11 @@ Endpoint URL: *Shared in the form*
 
 **Our Backend is fully functional and deployed on a server. The tech stacks we used:**
 
-- [**NodeJS**](https://nodejs.org/) - Runtime environment,
-- [**Express**](https://expressjs.com/) - Framework used to build the API, 
-- [**MongoDB**](https://mongodb.com/) - No sql database which is used for the storing the todos, 
-- [**Mongoose**](https://mongoosejs.com/) - Library which is used to interact with the mongodb database, 
-- [**Deta**]( https://deta.sh/ ) - Platform where the API is been hosted,
+- [**NodeJS**](https://nodejs.org/) - Runtime environment
+- [**Express**](https://expressjs.com/) - Framework used to build the API
+- [**MongoDB**](https://mongodb.com/) - No SQL database which is used for the storing the todo
+- [**Mongoose**](https://mongoosejs.com/) - Library which is used to interact with the MongoDB database 
+- [**Deta**]( https://deta.sh/ ) - Platform where the API is been hosted
 
 
 
