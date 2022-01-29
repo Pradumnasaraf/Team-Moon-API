@@ -57,10 +57,6 @@ class EditActivity : AppCompatActivity() {
         val service = retrofit.create(NotesAPI::class.java)
 
 
-        val jsonObject = JSONObject()
-        //jsonObject.put("_id", _id)
-        val jsonObjectString = jsonObject.toString()
-        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
         CoroutineScope(Dispatchers.IO).launch {
 
             // Do the POST request and get response

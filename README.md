@@ -50,4 +50,8 @@ Endpoint URL: *Shared in the form*
 
 **On the frontend side, we developed an Android App to make it more usable, even for a person who has Zero code knowledge. Tech Stacks we used:**
 
-- [**Kotlin**](https://kotlinlang.org/) - Kotlin is a modern statically typed programming language used by over 60% of professional Android
+- [**Kotlin**](https://kotlinlang.org/) - Kotlin is a modern statically typed programming language used by over 60% of professional Android.
+
+**Demo Video**
+
+https://user-images.githubusercontent.com/51878265/151658945-219a1e86-3e82-403c-85dc-e5f90f0ade1a.mp4
