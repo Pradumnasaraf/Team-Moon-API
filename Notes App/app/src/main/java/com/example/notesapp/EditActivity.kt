@@ -58,7 +58,7 @@ class EditActivity : AppCompatActivity() {
 
 
         val jsonObject = JSONObject()
-        jsonObject.put("_id", _id)
+        //jsonObject.put("_id", _id)
         val jsonObjectString = jsonObject.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
         CoroutineScope(Dispatchers.IO).launch {
@@ -66,7 +66,7 @@ class EditActivity : AppCompatActivity() {
             // Do the POST request and get response
             try {
                 val response =
-                    _id?.let { service.deleteToDO("https://team-moon-api.deta.dev/delete/$_id") }
+                    _id?.let { service.deleteToDO(it) }
                 if (response != null) {
                     withContext(Dispatchers.Main) {
                         if (response.isSuccessful) {
