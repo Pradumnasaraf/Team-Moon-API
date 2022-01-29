@@ -1,7 +1,9 @@
 package com.example.notesapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Adapter
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -57,6 +59,8 @@ class AddNotesActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
 
+                            val intent =Intent(this@AddNotesActivity,MainActivity::class.java)
+                        startActivity(intent)
                         Log.d("data", response.toString())
                     } else {
 

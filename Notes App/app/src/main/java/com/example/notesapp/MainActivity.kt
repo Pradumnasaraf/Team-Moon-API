@@ -1,12 +1,16 @@
 package com.example.notesapp
 
 import android.content.Intent
+import android.graphics.drawable.GradientDrawable
+import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
@@ -85,20 +89,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerview(noteList: List<Notes>) {
         val adapter = RecyclerAdapter(noteList, this)
-        val layoutManager = GridLayoutManager(this, 2)
+        val layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         recyclerview.layoutManager = layoutManager
         recyclerview.adapter = adapter
     }
 
-    fun sendIntent(_id: String, title: String, description: String) {
-        val intent = Intent(this@MainActivity, EditActivity::class.java)
-        intent.putExtra("_id", _id)
-        intent.putExtra("title", title)
-        intent.putExtra("description", description)
-        startActivity(intent)
-    }
+//    fun sendIntent(_id: String, title: String, description: String) {
+//        val intent = Intent(this@MainActivity, EditActivity::class.java)
+//        intent.putExtra("_id", _id)
+//        intent.putExtra("title", title)
+//        intent.putExtra("description", description)
+//        startActivity(intent)
+//    }
 
     override fun onResume() {
+
         fetchTodos()
         super.onResume()
     }
