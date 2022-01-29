@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -84,26 +83,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initRecyclerview(noteList: List<Movie>) {
-        val adapter = RecyclerAdapter(noteList)
+    private fun initRecyclerview(noteList: List<Notes>) {
+        val adapter = RecyclerAdapter(noteList, this)
         val layoutManager = GridLayoutManager(this, 2)
         recyclerview.layoutManager = layoutManager
         recyclerview.adapter = adapter
     }
 
+    fun sendIntent(_id: String, title: String, description: String) {
+        val intent = Intent(this@MainActivity, EditActivity::class.java)
+        intent.putExtra("_id", _id)
+        intent.putExtra("title", title)
+        intent.putExtra("description", description)
+        startActivity(intent)
+    }
 
-    private fun parseJson(notesData: ResponseBody?): ArrayList<Movie> {
-        val notes: ArrayList<Movie> = ArrayList()
-
-
-//            val title = items.getString(0)
-//            val description = items.getString(1)
-//            val id = items.getString(2)
-//            val createdAt = items.getString(3)
-//            notes.add(Movie(title, description, id, createdAt))
-
-
-        return notes
+    override fun onResume() {
+        fetchTodos()
+        super.onResume()
     }
 }
 

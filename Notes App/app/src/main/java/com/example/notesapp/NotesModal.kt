@@ -1,7 +1,7 @@
 package com.example.notesapp
 
 
-class Movie(
+class Notes(
     val _id: String,
     val title: String,
     val description: String,

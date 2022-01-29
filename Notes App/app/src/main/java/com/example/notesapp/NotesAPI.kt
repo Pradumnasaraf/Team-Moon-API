@@ -1,6 +1,5 @@
 package com.example.notesapp
 
-import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -14,13 +13,13 @@ interface NotesAPI {
 
     @Headers("Content-Type: application/json")
     @GET("/todos")
-    suspend fun getToDO(): Response<List<Movie>>
+    suspend fun getToDO(): Response<List<Notes>>
 
     @PUT("/update/:todoID")
-    suspend fun updateToDO(@Body requestBody: RequestBody): Response<ResponseBody>
+    suspend fun updateToDO(_id: Any, requestBody: RequestBody): Response<ResponseBody>
 
     @DELETE("/delete/:todoID")
-    suspend fun deleteToDO(@Body requestBody: Request): Response<ResponseBody>
+    suspend fun deleteToDO(@Url url: String): Response<ResponseBody>
 
 
 }
