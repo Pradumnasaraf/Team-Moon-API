@@ -1,5 +1,6 @@
 package com.example.notesapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -14,7 +15,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Retrofit
 import java.io.IOException
@@ -73,6 +73,8 @@ class EditActivity : AppCompatActivity() {
                             )
                                 .show()
                             Log.d("data", response.toString())
+                            startActivity(Intent(this@EditActivity, MainActivity::class.java))
+                            finish()
                         } else {
                             Toast.makeText(
                                 this@EditActivity,
@@ -103,15 +105,14 @@ class EditActivity : AppCompatActivity() {
 
 
         val jsonObject = JSONObject()
-        val jsonArray = JSONArray()
-        jsonArray.put(_id)
 
         val id: String? = _id
-        jsonArray.put(jsonObject.put("title", title))
 
-        jsonArray.put(jsonObject.put("description", description))
+        jsonObject.put("title", title)
+
+        jsonObject.put("description", description)
         //jsonObject.put("description", description)
-        val jsonObjectString = jsonArray.toString()
+        val jsonObjectString = jsonObject.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -121,11 +122,15 @@ class EditActivity : AppCompatActivity() {
                 if (response != null) {
                     withContext(Dispatchers.Main) {
                         if (response.isSuccessful) {
-
+                            Toast.makeText(this@EditActivity, "Updated", LENGTH_SHORT).show()
                             Log.d("data", response.toString())
+                            startActivity(Intent(this@EditActivity, MainActivity::class.java))
+                            finish()
                         } else {
+                            Toast.makeText(this@EditActivity, "Error", LENGTH_SHORT).show()
 
                             Log.e("RETROFIT_ERROR", response.code().toString())
+
 
                         }
                     }

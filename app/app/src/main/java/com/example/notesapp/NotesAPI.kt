@@ -16,7 +16,10 @@ interface NotesAPI {
     suspend fun getToDO(): Response<List<Notes>>
 
     @PUT("/update/{todoID}")
-    suspend fun updateToDO(@Path("todoID")_id: String, requestBody: RequestBody): Response<ResponseBody>
+    suspend fun updateToDO(
+        @Path("todoID") _id: String,
+        @Body body: RequestBody
+    ): Response<ResponseBody>
 
     @DELETE("/delete/{todoID}")
     suspend fun deleteToDO(@Path("todoID") id: String): Response<ResponseBody>
