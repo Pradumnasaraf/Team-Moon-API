@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Retrofit
 import java.io.IOException
@@ -66,7 +67,11 @@ class EditActivity : AppCompatActivity() {
                 if (response != null) {
                     withContext(Dispatchers.Main) {
                         if (response.isSuccessful) {
-                            Toast.makeText(this@EditActivity, "DELETED", LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@EditActivity,
+                                "DELETED", LENGTH_SHORT
+                            )
+                                .show()
                             Log.d("data", response.toString())
                         } else {
                             Toast.makeText(
@@ -98,11 +103,15 @@ class EditActivity : AppCompatActivity() {
 
 
         val jsonObject = JSONObject()
+        val jsonArray = JSONArray()
+        jsonArray.put(_id)
 
         val id: String? = _id
-        jsonObject.put("title", title)
-        jsonObject.put("description", description)
-        val jsonObjectString = jsonObject.toString()
+        jsonArray.put(jsonObject.put("title", title))
+
+        jsonArray.put(jsonObject.put("description", description))
+        //jsonObject.put("description", description)
+        val jsonObjectString = jsonArray.toString()
         val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
         CoroutineScope(Dispatchers.IO).launch {
 

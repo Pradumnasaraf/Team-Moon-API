@@ -1,13 +1,10 @@
 package com.example.notesapp
 
 import android.content.Intent
-import android.graphics.drawable.GradientDrawable
-import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -94,13 +91,6 @@ class MainActivity : AppCompatActivity() {
         recyclerview.adapter = adapter
     }
 
-//    fun sendIntent(_id: String, title: String, description: String) {
-//        val intent = Intent(this@MainActivity, EditActivity::class.java)
-//        intent.putExtra("_id", _id)
-//        intent.putExtra("title", title)
-//        intent.putExtra("description", description)
-//        startActivity(intent)
-//    }
 
     override fun onResume() {
 
