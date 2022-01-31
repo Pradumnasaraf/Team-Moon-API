@@ -8,27 +8,31 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(val notes: List<Notes>, mainActivity: MainActivity) :
+class RecyclerAdapter(val notes: List<NotesModal>, mainActivity: MainActivity) :
     RecyclerView.Adapter<RecyclerAdapter.RecyclerViewViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewViewHolder {
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.noteview, parent, false)
         return RecyclerViewViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: RecyclerViewViewHolder, position: Int) {
+
         holder.title.text = notes[position].title
         holder.description.text = notes[position].description
+
     }
 
     override fun getItemCount(): Int {
         return notes.size
     }
 
-    inner class RecyclerViewViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val description = view.findViewById<TextView>(R.id.tv_description)
-        val title = view.findViewById<TextView>(R.id.tv_title)
+    inner class RecyclerViewViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        val description: TextView = view.findViewById(R.id.tv_description)
+        val title: TextView = view.findViewById(R.id.tv_title)
 
         init {
             view.setOnClickListener {
@@ -36,18 +40,17 @@ class RecyclerAdapter(val notes: List<Notes>, mainActivity: MainActivity) :
                 val title = notes[position].title
                 val description = notes[position].description
                 val _id = notes[position]._id
+
                 val intent = Intent(view.context, EditActivity::class.java)
-                val bundle: Bundle = Bundle()
+
+                val bundle = Bundle()
                 bundle.putString("_id", _id)
                 bundle.putString("title", title)
                 bundle.putString("description", description)
-//                intent.putExtra("_id",_id)
-//                intent.putExtra("title",title)
-//                intent.putExtra("description",description)
-                intent.putExtras(bundle)
-//startActivity(view.context,intent,bundle)
-                view.context.startActivity(intent)
 
+                intent.putExtras(bundle)
+
+                view.context.startActivity(intent)
             }
         }
 

@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,10 +15,9 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
-import retrofit2.Retrofit
 import java.io.IOException
 
-class EditActivity : AppCompatActivity() {
+class EditActivity : AppCompatActivity(), NoteService {
 
     lateinit var et_description: EditText
     lateinit var et_title: EditText
@@ -51,10 +49,10 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun deleteNote(_id: String?) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://team-moon-api.deta.dev/")
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .build()
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://team-moon-api.deta.dev/")
+//            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//            .build()
         val service = retrofit.create(NotesAPI::class.java)
 
 
@@ -97,10 +95,10 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun updateNote(title: String?, description: String?, _id: String?) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://team-moon-api.deta.dev/")
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .build()
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://team-moon-api.deta.dev/")
+//            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//            .build()
         val service = retrofit.create(NotesAPI::class.java)
 
 
@@ -135,7 +133,6 @@ class EditActivity : AppCompatActivity() {
                         }
                     }
                 }
-
             } catch (e: IOException) {
                 Log.e("mirror", e.message!!)
             }

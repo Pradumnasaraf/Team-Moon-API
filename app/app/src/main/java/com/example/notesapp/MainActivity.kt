@@ -8,21 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NoteService {
     lateinit var recyclerview: RecyclerView
     lateinit var buttons: Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,38 +32,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchTodos() {
-        val gson = GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://team-moon-api.deta.dev/")
-
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
+    fun fetchTodos() {
         val service = retrofit.create(NotesAPI::class.java)
-        val jsonObject = JsonObject()
-
-        val jsonobjectString = jsonObject.toString()
-        val requestBody = jsonobjectString.toRequestBody("application/json".toMediaTypeOrNull())
-
         CoroutineScope(Dispatchers.IO).launch {
 
             // Do the POST request and get response
             val response = service.getToDO()
 
-
-//            try {
-//                val response = service.getToDO()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     val json = response.body()
                     if (json != null) {
                         initRecyclerview(json)
                     }
-                    //  initRecyclerview(notes)
                     Log.d("MainActivity", json.toString())
                 }
 
@@ -84,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initRecyclerview(noteList: List<Notes>) {
+    private fun initRecyclerview(noteList: List<NotesModal>) {
         val adapter = RecyclerAdapter(noteList, this)
         val layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         recyclerview.layoutManager = layoutManager

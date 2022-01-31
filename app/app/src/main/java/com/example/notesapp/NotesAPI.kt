@@ -13,7 +13,7 @@ interface NotesAPI {
 
     @Headers("Content-Type: application/json")
     @GET("/todos")
-    suspend fun getToDO(): Response<List<Notes>>
+    suspend fun getToDO(): Response<List<NotesModal>>
 
     @PUT("/update/{todoID}")
     suspend fun updateToDO(

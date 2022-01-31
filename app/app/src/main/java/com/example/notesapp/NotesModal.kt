@@ -1,7 +1,7 @@
 package com.example.notesapp
 
 
-class Notes(
+class NotesModal(
     val _id: String,
     val title: String,
     val description: String,
