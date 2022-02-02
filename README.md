@@ -12,6 +12,7 @@ Team Moon API (CRUD) is made using Express and MongoDB and fully deployed on Det
 
 #### Team Members
 
+- [**Pradumna Saraf**](https://github.com/Pradumnasaraf) Team Lead
 - [**Sudhanshu Ranjan**](https://github.com/srjranjan) worked on the Frontend
 - [**Mukesh**](https://github.com/Kira272921) Worked on API and Backend
 
