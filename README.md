@@ -1,4 +1,4 @@
-# Project for Postman API Fest 22
+# Project for Postman API Fest 22 (Winner)
 
 ![Team Moon (2)](https://user-images.githubusercontent.com/51878265/151656237-ca61c874-901a-4515-8269-8834e68e787f.png)
 
@@ -10,11 +10,16 @@ With only ***two members*** on the board, we were able to achieve to make a full
 ## Team Moon API
 Team Moon API (CRUD) is made using Express and MongoDB and fully deployed on Deta. It is used for taking notes. we can do operations like Reading, Writing, Deleting, and Editing the data.
 
-#### Team Members
+### Winner of Postman API Fest 22' (Top 10 teams were the winner)
 
-- [**Pradumna Saraf**](https://github.com/Pradumnasaraf) Team Lead
-- [**Sudhanshu Ranjan**](https://github.com/srjranjan) worked on the Frontend
-- [**Mukesh**](https://github.com/Kira272921) Worked on API and Backend
+![FKUzO6NVkAMx4IC](https://user-images.githubusercontent.com/51878265/157821326-0adab9b3-45fb-472b-8df0-7ff1f719a284.jpeg)
+
+
+### Team Members
+
+- [**Pradumna Saraf**](https://github.com/Pradumnasaraf) **Team Lead**
+- [**Sudhanshu Ranjan**](https://github.com/srjranjan) **worked on the Frontend**
+- [**Mukesh**](https://github.com/Kira272921) **Worked on API and Backend**
 
 ### Endpoints
 
