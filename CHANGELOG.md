@@ -1,4 +1,13 @@
-# 1.3.0 (2022-06-29)
+# [1.4.0](https://github.com/Pradumnasaraf/Team-Moon-API/compare/v1.3.0...v1.4.0) (2022-06-29)
+
+
+### Features
+
+* Add vercel config file ([827cffa](https://github.com/Pradumnasaraf/Team-Moon-API/commit/827cffa2514a3b9ab42ce6fac26a842f3e7489f9))
+
+
+
+# [1.3.0](https://github.com/Pradumnasaraf/Team-Moon-API/compare/4a81c4d8d480085d8b5ca75f42b2e2f67d68a078...v1.3.0) (2022-06-29)
 
 
 ### Bug Fixes
