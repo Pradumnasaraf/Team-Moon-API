@@ -1,17 +1,17 @@
 const Todo = require("../model/schema");
 
-const postTodo = async (req, res) => {
-  try {
-    const newTodo = new Todo({
-      title: req.body.title,
-      description: req.body.description,
-    });
+const postTodo = (req, res) => {
+  const newTodo = new Todo({
+    title: req.body.title,
+    description: req.body.description,
+  });
 
-    const todo = await newTodo.save();
-    res.status(201).json(todo);
-  } catch (err) {
-    res.status(400).json(err);
-  }
+  newTodo.save((err, todo) => {
+    if (err) {
+      res.json(err);
+    }
+    res.json(todo);
+  });
 };
 
 module.exports = postTodo;
