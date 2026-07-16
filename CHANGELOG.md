@@ -1,3 +1,14 @@
+## [1.4.1](https://github.com/Pradumnasaraf/Team-Moon-API/compare/v1.4.0...v1.4.1) (2026-07-16)
+
+
+### Reverts
+
+* Revert "chore(deps): upgrade api dependencies to latest majors" ([5a65963](https://github.com/Pradumnasaraf/Team-Moon-API/commit/5a659631af45f105aef06c5939ddc2c5268e5bf4))
+* Revert "refactor(api): migrate to mongoose 9 and express 5" ([c296ec5](https://github.com/Pradumnasaraf/Team-Moon-API/commit/c296ec54d6f398623c455611701bbdbb521c7d5a))
+* Revert "chore: clarify eslint major ignore in dependabot config" ([81855ad](https://github.com/Pradumnasaraf/Team-Moon-API/commit/81855add51cc9c337757e243c9887565c67cc5c7))
+
+
+
 # [1.4.0](https://github.com/Pradumnasaraf/Team-Moon-API/compare/v1.3.0...v1.4.0) (2022-06-29)
 
 
