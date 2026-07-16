@@ -18,7 +18,8 @@ updates:
       prefix: 'chore'
       include: 'scope'
     ignore:
-      # eslint-config-airbnb (legacy .eslintrc) does not support ESLint 9 flat config
+      # airbnb-base uses legacy .eslintrc, which ESLint 10 dropped (eslintrc support removed).
+      # Hold eslint at v8, the newest release eslint-config-airbnb-base supports.
       - dependency-name: 'eslint'
         update-types: ['version-update:semver-major']
   - package-ecosystem: 'github-actions'
