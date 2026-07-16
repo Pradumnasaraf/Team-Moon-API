@@ -14,20 +14,21 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "express-rate-limit": "^8.5.2",
-    "mongoose": "^9.7.4"
+    "dotenv": "^14.3.2",
+    "express": "^4.22.2",
+    "express-rate-limit": "^6.11.2",
+    "mongoose": "^6.13.10"
   },
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^5.5.6",
-    "nodemon": "^3.1.14",
-    "prettier": "^3.9.5"
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
   }
 }
