@@ -1,13 +1,8 @@
 version: 2
 updates:
-  - package-ecosystem: 'gradle'
-    directory: '/app'
-    schedule:
-      interval: 'weekly'
-    labels: ['dependencies']
-    commit-message:
-      prefix: 'chore'
-      include: 'scope'
+  # Android app/ (Gradle) is intentionally not tracked by Dependabot: its
+  # AGP/Kotlin/Gradle/androidx versions are tightly coupled and require an
+  # Android Studio environment to upgrade and verify safely.
   - package-ecosystem: 'npm'
     directory: '/api'
     schedule:
