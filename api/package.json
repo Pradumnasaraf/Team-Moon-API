@@ -16,7 +16,7 @@
     "cors": "^2.8.6",
     "dotenv": "^14.3.2",
     "express": "^4.22.2",
-    "express-rate-limit": "^6.11.2",
+    "express-rate-limit": "^8.5.2",
     "mongoose": "^6.13.10"
   },
   "devDependencies": {
