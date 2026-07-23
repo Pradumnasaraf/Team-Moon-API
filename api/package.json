@@ -17,7 +17,7 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "express-rate-limit": "^8.5.2",
-    "mongoose": "^9.7.4"
+    "mongoose": "^9.8.0"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
