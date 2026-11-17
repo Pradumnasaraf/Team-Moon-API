@@ -29,5 +29,10 @@
     "eslint-plugin-prettier": "^5.5.7",
     "nodemon": "^3.1.14",
     "prettier": "^3.9.10"
+  },
+  "resolutions": {
+    "**/flat-cache/flatted": "^3.4.2",
+    "**/external-editor/tmp": "^0.2.6",
+    "**/nodemon/minimatch": "^11.0.1"
   }
 }
